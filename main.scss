@@ -1,0 +1,39 @@
+// Variables
+$backColor: rgba(244, 66, 66, 0.6);
+$playerColor: rgb(65, 86, 244);
+
+$boardWidth: 100%;
+$boardHeight: 100vh;
+
+body {
+	margin: 0;
+}
+
+#board {
+	position: relative;
+	background-image: url('img/background-image.png');
+	background-attachment: fixed;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: auto;
+	width: $boardWidth;
+	height: $boardHeight;
+	overflow: hidden;
+
+	#score {
+		position: absolute;
+		top: 25px;
+		left: 100px;
+		background: rgba(255, 0, 0, 0.8);
+		width: 100px;
+		height: 50px;
+	}
+
+	#player {
+		position: absolute;
+		background-color: $playerColor;
+		width: 50px;
+		height: 50px;
+		border-radius: 25px;
+	}
+}
