@@ -3,6 +3,7 @@ $(document).ready(function() {
 
   var board = new Board()
 	var player = new Player(350, 200)
+	var enemy = new Enemy(350, 800)
 
 	var fps = 30
 
@@ -10,6 +11,7 @@ $(document).ready(function() {
 
 	function update() {
 	  checkControls()
+		enemy.move()
 	}
 
 	$(document).keydown(function(e) {
@@ -35,5 +37,4 @@ $(document).ready(function() {
 	function moveRightPlayer() {
 		board.moveRight()
 	}
-
 })

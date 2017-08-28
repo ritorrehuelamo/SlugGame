@@ -21,4 +21,12 @@ body {
 		width: 256px;
 		height: 100vh;
 	}
+
+	#enemy {
+		background-image: url('../img/enemy_1.gif');
+		background-repeat: no-repeat;
+		background-size: contain;
+		width: 256px;
+		height: 100vh;
+	}
 }
