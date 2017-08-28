@@ -21,11 +21,9 @@ Player.prototype.restart = function(x, y, score, lifes) {
 }
 
 Player.prototype.moveLeft = function() {
-  // if (this.x >= 0) {
     this.x = parseInt($('#player').css('left'))
     this.x += 10
     $('#player').css('left', this.x + 'px')
-  // }
 }
 
 Player.prototype.moveRight = function() {
@@ -38,4 +36,12 @@ Player.prototype.moveRight = function() {
 
 Player.prototype.jump = function() {
 
+}
+
+Player.prototype.flipPlayerLeft = function () {
+	$('#player').css('transform', 'rotateY(180deg)')
+}
+
+Player.prototype.flipPlayerRigth = function () {
+	$('#player').css('transform', 'rotateY(360deg)')
 }

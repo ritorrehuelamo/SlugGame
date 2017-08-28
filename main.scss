@@ -22,18 +22,16 @@ body {
 
 	#score {
 		position: absolute;
-		top: 25px;
-		left: 100px;
 		background: rgba(255, 0, 0, 0.8);
+		text-align: center;
+		padding: 10px 5px;
 		width: 100px;
-		height: 50px;
+		color: #fff;
 	}
 
 	#player {
-		position: absolute;
-		background-color: $playerColor;
-		width: 50px;
-		height: 50px;
-		border-radius: 25px;
+		background-image: url('img/player.gif');
+		height: 256px;
+		width: 256px;
 	}
 }

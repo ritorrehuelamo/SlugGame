@@ -23,9 +23,9 @@ $(document).ready(function() {
 
   function checkControls() {
     if (keys[68]) {
-      player.moveLeft()
+			moveLeftPlayer()
     } else if (keys[65]) {
-      player.moveRight()
+			moveRightPlayer()
     } else if (keys[87]) {
       player.jump()
     }
@@ -33,6 +33,18 @@ $(document).ready(function() {
 
 	function renderPlayer () {
 
+	}
+
+	function moveLeftPlayer(){
+		player.flipPlayerRigth()
+		board.updateScroll('left')
+		player.moveLeft()
+	}
+
+	function moveRightPlayer () {
+		player.flipPlayerLeft()
+		board.updateScroll('right')
+		player.moveRight()
 	}
 
 }) // $(document).ready final
