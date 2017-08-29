@@ -3,15 +3,14 @@ $(document).ready(function() {
 
   var board = new Board()
 	var player = new Player(350, 200)
-	var enemy = new Enemy(350, 800)
 
-	var fps = 30
+	var fps = 15
 
 	setInterval(update, 1000 / fps)
 
 	function update() {
 	  checkControls()
-		enemy.move()
+		board.enemyPosition()
 	}
 
 	$(document).keydown(function(e) {
@@ -25,9 +24,9 @@ $(document).ready(function() {
 	    moveLeftPlayer()
 	  } else if (keys[65]) {
 	    moveRightPlayer()
-	  } else if (keys[87]) {
-	    player.jump()
-	  }
+	  } // else if (keys[87]) {
+	  //   player.jump()
+	  // }
 	}
 
 	function moveLeftPlayer(){

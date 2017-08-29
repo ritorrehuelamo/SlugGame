@@ -1,7 +1,8 @@
 function Player(x, y) {
 	this.x = x
 	this.y = y
-	this.lifes = 3
+	this.life = 100
+	this.strength = 10
 	this._startPlayer()
 }
 

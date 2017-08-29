@@ -5,6 +5,8 @@ function Board() {
   this._startBoard()
 }
 
+var enemy = new Enemy(350, 800)
+
 Board.prototype._startBoard = function() {
   this.board = $('<div>').attr('id', 'score')
   this.board.css({
@@ -16,27 +18,37 @@ Board.prototype._startBoard = function() {
 }
 
 Board.prototype.moveLeft = function() {
-  this.flipPlayerRigth()
-  this.x = parseInt($('#board').css('left'))
-	if (parseInt($('#board').css('left')) < 4000) {
-		this.x -= 10
-		$('#board').css('left', this.x)
-	}
+  this._flipPlayerRigth()
+  this._moveLeftBoard()
 }
 
 Board.prototype.moveRight = function() {
-  this.flipPlayerLeft()
-	this.x = parseInt($('#board').css('left'))
-  if (parseInt($('#board').css('left')) <= 0) {
+  this._flipPlayerLeft()
+  this._moveRightBoard()
+}
+
+Board.prototype._moveLeftBoard = function() {
+  if (parseInt($('#board').css('left')) < 4000) {
+    this.x -= 10
+    $('#board').css('left', this.x)
+  }
+}
+
+Board.prototype._moveRightBoard = function() {
+  if (parseInt($('#board').css('left')) <= -10) {
     this.x += 10
     $('#board').css('left', this.x)
   }
 }
 
-Board.prototype.flipPlayerLeft = function() {
+Board.prototype._flipPlayerLeft = function() {
   $('#player').css('transform', 'rotateY(180deg)')
 }
 
-Board.prototype.flipPlayerRigth = function() {
+Board.prototype._flipPlayerRigth = function() {
   $('#player').css('transform', 'rotateY(360deg)')
+}
+
+Board.prototype.enemyPosition = function() {
+  enemy.move(this.x)
 }
