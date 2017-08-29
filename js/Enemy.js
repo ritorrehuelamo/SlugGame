@@ -2,7 +2,8 @@ function Enemy(x, y) {
   this.x = x
   this.y = y
   this.boardX = 0
-  this.life = 50
+  this.attack = 50
+	this.health = 50
   this.direction = ''
   this._generateEnemy(this.x, this.y)
 }
@@ -30,20 +31,28 @@ Enemy.prototype.move = function(x) {
   if (this._enemyPosition() >= 850) this.direction = 'right'
 }
 
+Enemy.prototype.attack = function () {
+	return this.attack
+}
+
+Enemy.prototype.receiveDamage = function (damage) {
+	this.health -= damage
+}
+
 Enemy.prototype._enemyPosition = function() {
   return parseInt($('#enemy').css('left'))
 }
 
 Enemy.prototype._moveRight = function() {
+	// console.log(this.x, this.boardX, this.x - this.boardX, 'right')
   this._flipEnemyLeft()
-  console.log(this.x, this.boardX, this.x - this.boardX, 'right')
   this.x -= 10
   $('#enemy').css('left', this.x)
 }
 
 Enemy.prototype._moveLeft = function() {
+	// console.log(this.x, this.boardX, this.x - this.boardX, 'left')
   this._flipEnemyRight()
-  console.log(this.x, this.boardX, this.x - this.boardX, 'left')
   this.x += 10
   $('#enemy').css('left', this.x)
 }
