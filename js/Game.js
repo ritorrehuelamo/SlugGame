@@ -1,8 +1,6 @@
 $(document).ready(function() {
   var keys = {}
-
   var board = new Board()
-	var player = new Player(350, 200)
 
 	var fps = 15
 
@@ -10,7 +8,8 @@ $(document).ready(function() {
 
 	function update() {
 	  checkControls()
-		board.enemyPosition()
+		enemy.move()
+		player.player2EnemyColl()
 	}
 
 	$(document).keydown(function(e) {
@@ -20,20 +19,12 @@ $(document).ready(function() {
 	})
 
 	function checkControls() {
-	  if (keys[68]) {
-	    moveLeftPlayer()
-	  } else if (keys[65]) {
-	    moveRightPlayer()
-	  } // else if (keys[87]) {
-	  //   player.jump()
-	  // }
+	  if (keys[68]) moveLeftPlayer()
+		else if (keys[65]) moveRightPlayer()
+		else if (keys[32]) shootBoard()
 	}
 
-	function moveLeftPlayer(){
-		board.moveLeft()
-	}
-
-	function moveRightPlayer() {
-		board.moveRight()
-	}
+	function moveLeftPlayer() { board.moveLeft() }
+	function moveRightPlayer() { board.moveRight() }
+	function shootBoard() { board.shot() }
 })

@@ -1,11 +1,12 @@
 function Board() {
   this.x = 0
   this.y = 0
-  this.score = 0
   this._startBoard()
 }
 
-var enemy = new Enemy(350, 800)
+
+var player = new Player(325, 200)
+var enemy = new Enemy(800, 350)
 
 Board.prototype._startBoard = function() {
   this.board = $('<div>').attr('id', 'score')
@@ -25,6 +26,11 @@ Board.prototype.moveLeft = function() {
 Board.prototype.moveRight = function() {
   this._flipPlayerLeft()
   this._moveRightBoard()
+}
+
+Board.prototype.shot = function () {
+	var bullet = new Bullet(player.x, player.y, player.strength)
+	bullet.shotPlayer(player.y, enemy.y)
 }
 
 Board.prototype._moveLeftBoard = function() {
@@ -47,8 +53,4 @@ Board.prototype._flipPlayerLeft = function() {
 
 Board.prototype._flipPlayerRigth = function() {
   $('#player').css('transform', 'rotateY(360deg)')
-}
-
-Board.prototype.enemyPosition = function() {
-  enemy.move(this.x)
 }
