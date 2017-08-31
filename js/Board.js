@@ -4,8 +4,6 @@ function Board() {
   this._startBoard()
 }
 
-
-var player = new Player(325, 200)
 var enemy = new Enemy(800, 350)
 
 Board.prototype._startBoard = function() {
@@ -28,10 +26,6 @@ Board.prototype.moveRight = function() {
   this._moveRightBoard()
 }
 
-Board.prototype.shot = function () {
-	var bullet = new Bullet(player.x, player.y, player.strength)
-	bullet.shotPlayer(player.y, enemy.y)
-}
 
 Board.prototype._moveLeftBoard = function() {
   if (parseInt($('#board').css('left')) < 4000) {

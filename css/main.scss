@@ -1,7 +1,9 @@
+@import url( 'https://fonts.googleapis.com/css?family=Press+Start+2P');
 $boardHeight: 100vh;
 
 body {
 	margin: 0;
+	font-family: 'Press Start 2P', cursive;
 }
 
 #board {
@@ -30,9 +32,9 @@ body {
 		height: 100vh;
 	}
 
-	#shot {
+	.shot {
 		width: 50px;
 		height: 50px;
-		background-color: #fff;
+		background-color: red;
 	}
 }

@@ -17,12 +17,12 @@ Player.prototype._startPlayer = function () {
 	$('#board').append(this.player)
 }
 
-Player.prototype.player2EnemyColl = function () {
-	if($('#player').collision('#enemy').length > 0){
-		this.receiveDamage(enemy.attack)
-		if(this.health < 0) { console.log('YOU LOSE!!') }
-	}
-}
+// Player.prototype.player2EnemyColl = function () {
+// 	if($('#player').collision('#enemy').length > 0){
+// 		this.receiveDamage(enemy.attack)
+// 		if(this.health < 0) { console.log('YOU LOSE!!') }
+// 	}
+// }
 
 Player.prototype.attack = function () {
 	return this.strength
