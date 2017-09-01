@@ -1,33 +1,25 @@
-function Player(x, y) {
-	this.x = x
-	this.y = y
-	this.score = 0
-	this.health = 100
-	this.strength = 10
-	this._startPlayer()
-}
-
-Player.prototype._startPlayer = function () {
+function Player (x, y) {
+	Positionable.call(this, x, y)
 	this.player = $('<div>').attr('id', 'player')
-	this.player.css({
-		top: this.x,
-		left: this.y,
-		position: 'fixed'
-	})
+		.css({
+			top: this.y,
+			left: this.x,
+			position: 'absolute'
+		})
 	$('#board').append(this.player)
 }
 
-// Player.prototype.player2EnemyColl = function () {
-// 	if($('#player').collision('#enemy').length > 0){
-// 		this.receiveDamage(enemy.attack)
-// 		if(this.health < 0) { console.log('YOU LOSE!!') }
-// 	}
-// }
+Player.prototype = Object.create(Positionable.prototype)
+Player.prototype.constructor = Player
 
-Player.prototype.attack = function () {
-	return this.strength
+Player.prototype.moveLeft = function () {
+	this.x = parseInt($('#player').css('left'))
+	if(this.x >= -10) { this.x += 10 }
+	$('#player').css('left', this.x)
 }
 
-Player.prototype.receiveDamage = function (damage) {
-		this.health -= damage
+Player.prototype.moveRight = function () {
+		this.x = parseInt($('#player').css('left'))
+		if (this.x >= -10 ) this.x -= 10
+		$('#player').css('left', this.x)
 }

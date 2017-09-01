@@ -1,45 +1,46 @@
 $(document).ready(function() {
-  var keys = {}
-  var bullets = []
-
-  var board = new Board()
-  var player = new Player(325, 200)
-
-  var fps = 15
+  var player = new Player(300, 400)
+  var board = new Board(player.x, player.y)
+  var keys = {},
+    bullets = [],
+    fps = 30
 
   setInterval(update, 1000 / fps)
 
-  function update() {
-    checkControls()
-    enemy.move()
-    bullets.forEach((e) => {
-			e.update()
-			if(e.remove === true) e.enemyCollision()
-    })
-  }
-
-  $(document).keydown(function(e) {
-    keys[e.keyCode] = true;
-  }).keyup(function(e) {
-    delete keys[e.keyCode]
-  })
+  $(document).keydown(key => keys[key.keyCode] = true)
+    .keyup(key => delete keys[key.keyCode])
 
   function checkControls() {
-    if (keys[68]) moveLeftPlayer()
-    else if (keys[65]) moveRightPlayer()
-    else if (keys[32]) shootBoard()
+    if (keys[68]) player.moveLeft()
+    else if (keys[65]) player.moveRight()
+    else if (keys[32]) shotPlayer()
   }
 
-  function moveLeftPlayer() {
-    board.moveLeft()
+  function shotPlayer() {
+    bullets.push(new Bullet(player.x, player.y))
   }
 
-  function moveRightPlayer() {
-    board.moveRight()
+  var desiredNumberOfMonsters = 15;
+  var monsters = []
+
+  function fillFullMonsters(n) {
+    for (var i = 0; i < n; i++) {
+      var x = parseInt(Math.random() * 700 + Math.random() * 3000)
+      monsters.push(new Enemy(x, player.y, 'monster' + i))
+    }
   }
 
-  function shootBoard() {
-    bullets.push(new Bullet(board.x, board.y))
+  function moveBoardWithPlayer() {
+    board.x = player.x
+    board.boardMove()
+  }
+
+  fillFullMonsters(desiredNumberOfMonsters)
+
+  function update() {
+    checkControls()
+    bullets.forEach(bullet => bullet.update())
+    moveBoardWithPlayer()
   }
 
 })
